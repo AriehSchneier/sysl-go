@@ -53,8 +53,8 @@ jobs:
         # https://docs.github.com/en/actions/creating-actions/dockerfile-support-for-github-actions#user
         # https://docs.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#filesystems-on-github-hosted-runners
         # https://github.com/actions/checkout/issues/211
-        run: |
-          sudo chown -R $USER:$USER $GITHUB_WORKSPACE
+        # run: |
+        #   sudo chown -R $USER:$USER $GITHUB_WORKSPACE
 
       - name: "make check-tidy"
-        run: docker run --rm --user $USER:$USER -v $(pwd):/work -w /work --entrypoint "git" ci-builder status
+        run: docker run --rm -v $(pwd):/work -w /work --entrypoint "git" ci-builder status
