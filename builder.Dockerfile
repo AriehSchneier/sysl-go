@@ -15,4 +15,6 @@ RUN curl -LJO https://github.com/golangci/golangci-lint/releases/download/v1.56.
 
 RUN go install golang.org/x/tools/cmd/goimports@latest
 
+RUN git config --global --add safe.directory /work
+
 ENTRYPOINT [ "/usr/bin/make" ]
