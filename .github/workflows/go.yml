@@ -39,22 +39,22 @@ jobs:
       # - name: "make all"
       #   run: docker run --rm -v $(pwd):/work -w /work --entrypoint "/usr/bin/make" ci-builder all
 
-      - name: "hack - workaround github actions runner filesystem permission issue"
-        # This hack should not be necessary, but if we don't do it, the
-        # next step fails during docker build as docker does not have
-        # permission to read files included in the github workspace that
-        # were written by the previous step. This is pretty daft as we
-        # don't even want or need docker to attempt to read these files
-        # during the image build. Github actions appears to give us no way
-        # to customise the build context to exclude it trying to read these
-        # files.
-        #
-        # Refs:
-        # https://docs.github.com/en/actions/creating-actions/dockerfile-support-for-github-actions#user
-        # https://docs.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#filesystems-on-github-hosted-runners
-        # https://github.com/actions/checkout/issues/211
-        # run: |
-        #   sudo chown -R $USER:$USER $GITHUB_WORKSPACE
+      # - name: "hack - workaround github actions runner filesystem permission issue"
+      #   # This hack should not be necessary, but if we don't do it, the
+      #   # next step fails during docker build as docker does not have
+      #   # permission to read files included in the github workspace that
+      #   # were written by the previous step. This is pretty daft as we
+      #   # don't even want or need docker to attempt to read these files
+      #   # during the image build. Github actions appears to give us no way
+      #   # to customise the build context to exclude it trying to read these
+      #   # files.
+      #   #
+      #   # Refs:
+      #   # https://docs.github.com/en/actions/creating-actions/dockerfile-support-for-github-actions#user
+      #   # https://docs.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#filesystems-on-github-hosted-runners
+      #   # https://github.com/actions/checkout/issues/211
+      #   run: |
+      #     sudo chown -R $USER:$USER $GITHUB_WORKSPACE
 
       - name: "make check-tidy"
         run: docker run --rm -v $(pwd):/work -w /work --entrypoint "git" ci-builder status
