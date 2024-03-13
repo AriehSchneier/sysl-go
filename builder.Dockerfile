@@ -1,8 +1,8 @@
 ARG DOCKER_BASE=golang:1.22-bookworm
 FROM ${DOCKER_BASE}
 
-ENV SYSL_VERSION=0.604.0
-ENV ARRAI_VERSION=0.313.0
+ENV SYSL_VERSION=0.735.0
+ENV ARRAI_VERSION=0.319.0
 
 WORKDIR /temp-deps/sysl
 RUN curl -LJO https://github.com/anz-bank/sysl/releases/download/v"$SYSL_VERSION"/sysl_"$SYSL_VERSION"_linux-amd64.tar.gz && tar -xvf sysl_"$SYSL_VERSION"_linux-amd64.tar.gz && mv sysl /bin/sysl
