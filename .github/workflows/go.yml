@@ -36,9 +36,8 @@ jobs:
       - name: "go work"
         run: docker run --rm -v $(pwd):/work -w /work --entrypoint "/usr/bin/make" ci-builder go-work
 
-      # - name: "make all"
-      #   run: docker run --rm -v $(pwd):/work -w /work --entrypoint "/usr/bin/make" ci-builder all
+      - name: "make all"
+        run: docker run --rm -v $(pwd):/work -w /work --entrypoint "/usr/bin/make" ci-builder all
 
       - name: "make check-tidy"
-        # Need the --add safe.directory to fix git commands working inside the docker image (it is run in actions/checkout but the git config is not passed in)
         run: docker run --rm -v $(pwd):/work -w /work --entrypoint "/usr/bin/make" ci-builder check-tidy
