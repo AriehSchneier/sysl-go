@@ -597,7 +597,7 @@ type autogenServer struct {
 	m                  sync.Mutex // protect access to multiServer
 }
 
-//nolint:funlen,gocognit
+//nolint:funlen
 func (s *autogenServer) Start() error {
 	// precondition: ctx must have been threaded through InitialiseLogging and hence contain a logger
 	ctx := s.ctx
