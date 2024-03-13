@@ -1,4 +1,4 @@
-ARG DOCKER_BASE=golang:1.22-buster
+ARG DOCKER_BASE=golang:1.22-bookworm
 FROM ${DOCKER_BASE}
 
 ENV SYSL_VERSION=0.604.0
