@@ -57,4 +57,4 @@ jobs:
       #     sudo chown -R $USER:$USER $GITHUB_WORKSPACE
 
       - name: "make check-tidy"
-        run: docker run --rm -v $(pwd):/work -w /work --entrypoint "git" ci-builder status
+        run: docker run --rm -v $(pwd):/work -w /work --entrypoint "sh" ci-builder -c "git status"
